@@ -23,9 +23,9 @@ This is the third assignment for the UTSA Full-Stack Bootcamp. This is a passwor
 
 Here is a screenshot of the webpage for the password generator. 
 
-![javascript1](/Images/javascript homework_n.jpg)
+![javascript1](./Images/javascript homework_n.jpg)
 
-![javascript2](/Images/javascript homework_w.jpg)
+![javascript2](./Images/javascript homework_w.jpg)
 
 
 ### Deployed Link
