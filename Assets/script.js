@@ -4,7 +4,7 @@
 //Variables of different letters, numbers, and symbols
 var lowerCharArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCharArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numbers = [0,1,2,3,4,5,6,7,8,9];
+var numbers = ["0","1","2","3","4","5","6","7","8","9"];
 var specialChar = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", '\\', "]", "^", "_", "`", "{", "|", "}", "~"];
 
 //Event Listener for click of button
@@ -22,39 +22,40 @@ function writePassword() {
     return alert("Invalid response. Please enter a number. Must be between 8 and 128 and not use letters");
   }
 //Prompts user to confirm if they want a specific set of characters to use
-  var lowerAlpha = confirm("Would you want your password to have lowercase letters? Ok = Yes Cancel = NO");
+  var lowerAlpha = confirm("Would you want your password to have lowercase letters?");
   var upperAlpha = confirm("Would you want your password to have uppercase letters?");
   var numChar = confirm("Would you want your password to have numbers?");
   var specialPick = confirm("Do you want your password to have special characters?");
 
-//Creates an array for chosen characters called 'userPick' and puts them together
-  var userPick = [];
+//Creates an array for chosen characters called 'userArray' and puts them together
+  var userArray = [];
+  
   
   if (lowerAlpha === true) {
-    collection = userPick.concat(lowerCharArr);
+    userArray = userArray.concat(lowerCharArr);
   }
   if (upperAlpha === true) {
-    collection = userPick.concat(upperCharArr);
+    userArray = userArray.concat(upperCharArr);
   }
   if (numChar === true) {
-    collection = userPick.concat(numbers);
+    userArray = userArray.concat(numbers);
   }
   if (specialPick === true) {
-    collection = userPick.concat(specialChar);
+    userArray = userArray.concat(specialChar);
   }
 
 //this function will take the password length and collection to perform the random math for the password text
-  function generatePassword(passwordLength, collection) {
+  function generatePassword() {
     var passwordText = "";
     for (var i = 0; i < passwordLength; i++) {
-      passwordText += collection[Math.floor(Math.random() * collection.length)];
+      passwordText += userArray[Math.floor(Math.random() * userArray.length)];
     }
     return passwordText;
   }
 
   var passwordTextField = document.querySelector("#password");
 
-  passwordTextField.value = generatePassword(passwordLength, collection);
+  passwordTextField.value = generatePassword();
 }
 
 // Add event listener to generate button
