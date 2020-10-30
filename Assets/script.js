@@ -1,101 +1,61 @@
 // Assignment Code
 
-function generatePassword(){
+
 //Variables of different letters, numbers, and symbols
-var lowerCaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var upperCaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var lowerCharArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCharArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numbers = [0,1,2,3,4,5,6,7,8,9];
 var specialChar = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", '\\', "]", "^", "_", "`", "{", "|", "}", "~"];
-var pickedArray = [];
 
-var passwordLength = getPasswordLength();
+//Event Listener for click of button
+var generateBtn = document.querySelector("#generate");
 
-var charTypeSelected = false;
-
-function getPasswordLength() {
-  var userChoice = 0;
-  while ((userChoice < 8) || (userChoice > 128)){
-    userChoice = window.prompt("Enter a number of characters between 8 and 128: ");
-
-    //If not a number, makes user reset the choice value to 0
-    if (isNaN(userChoice)) {
-      userChoice = 0;      
-    }
-  }
-   return userChoice;
-}
-
-//loop for user to pick at least one character type
-while (charTypeSelected == false){
-  var lowerAlpha = getChoice("lowercase");
-  var upperAlpha = getChoice("uppercase");
-  var numChar = getChoice("numeric");
-  var specialPick = getChoice("special");
-  
-  if ((lowerAlpha) || (upperAlpha) || (numChar) || (specialPick)){
-    charTypeSelected = true;
-  }
-  else {
-    window.alert("You must select at least one character type")
-  }
-}
-//PROBLEM HERE -- Cant cancel out of function
-//function for user choice options, instead of writing them all out
-function getChoice(currentOption){
-  var userChoice = "x";
-   messagePrompt = "";
-  var messagePrompt = ('Would you like '.concat(currentOption));
-  messagePrompt = messagePrompt.concat(' characters (y/n)?');
-  //loops ensures a valid response
-  while (userChoice = "x") {
-    userChoice = (window.prompt(messagePrompt));
-    //mobile users because sometimes the letters become capitalized
-    userChoice = userChoice.toLowerCase();
-    if (userChoice == "y"){
-      return true;
-    }
-    
-    else if  (userChoice == "n") {
-        return false;
-      }
-    }
-  }
-  
-// this joins strings together
-if (lowerAlpha) {
-  pickedArray = pickedArray.concat(lowerCaseChar);
-}
-if (upperAlpha){
-  pickedArray = pickedArray.concat(upperCaseChar);  
-}
-if (numChar){
-  pickedArray = pickedArray.concat(numbers);
-}
-if (specialPick){
-  pickedArray = pickedArray.concat(specialChar)
-}
-
-var passwordString = "";
-//this loop will take the joined strings, randomly select from it, then connect it
-for (var i= 0; i < passwordLength; i++) {
-  passwordString += pickedArray[Math.floor(Math.random() * (pickedArray.length))];
-}
-
-return passwordString;
-
-}
-
-// references the generate element
- var generateBtn = document.querySelector("#generate");
-
- //Write password to the #password input
+// Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
- var passwordText = document.querySelector("#password");
+  var passwordLength = prompt("Enter a number of characters for the password between 8 and 128:");  
 
- passwordText.value = password;
+  passwordLength = parseInt(passwordLength);
+  if (passwordLength >= 8 && passwordLength <= 128) {
+    alert("Your password will be " + passwordLength + " characters long.");
+  } 
+  else {
+    return alert("Invalid response. Please enter a number. Must be between 8 and 128 and not use letters");
+  }
+//Prompts user to confirm if they want a specific set of characters to use
+  var lowerAlpha = confirm("Would you want your password to have lowercase letters? Ok = Yes Cancel = NO");
+  var upperAlpha = confirm("Would you want your password to have uppercase letters?");
+  var numChar = confirm("Would you want your password to have numbers?");
+  var specialPick = confirm("Do you want your password to have special characters?");
 
+//Creates an array for chosen characters called 'userPick' and puts them together
+  var userPick = [];
+  
+  if (lowerAlpha === true) {
+    collection = userPick.concat(lowerCharArr);
+  }
+  if (upperAlpha === true) {
+    collection = userPick.concat(upperCharArr);
+  }
+  if (numChar === true) {
+    collection = userPick.concat(numbers);
+  }
+  if (specialPick === true) {
+    collection = userPick.concat(specialChar);
+  }
+
+//this function will take the password length and collection to perform the random math for the password text
+  function generatePassword(passwordLength, collection) {
+    var passwordText = "";
+    for (var i = 0; i < passwordLength; i++) {
+      passwordText += collection[Math.floor(Math.random() * collection.length)];
+    }
+    return passwordText;
+  }
+
+  var passwordTextField = document.querySelector("#password");
+
+  passwordTextField.value = generatePassword(passwordLength, collection);
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword); 
+generateBtn.addEventListener("click", writePassword);
