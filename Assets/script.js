@@ -57,5 +57,5 @@ function writePassword() {
   passwordTextField.value = generatePassword();
 }
 
-// Add event listener for suer click to run function to writePassword
+// Add event listener for user click to run function to writePassword
 generateBtn.addEventListener("click", writePassword);
