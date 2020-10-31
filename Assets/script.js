@@ -12,20 +12,19 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var passwordLength = prompt("Enter a number of characters for the password between 8 and 128:");  
+  var passwordLength = prompt("Enter a number of characters between 8 and 128 for the password:");  
 
   passwordLength = parseInt(passwordLength);
-  if (passwordLength >= 8 && passwordLength <= 128) {
-    alert("Your password will be " + passwordLength + " characters long.");
+  if (passwordLength >= 8 && passwordLength <= 128) {    
   } 
   else {
-    return alert("Invalid response. Please enter a number. Must be between 8 and 128 and not use letters");
+    return alert("Invalid response. Please enter a number between 8 and 128 and DO NOT use letters");
   }
 //Prompts user to confirm if they want a specific set of characters to use
-  var lowerAlpha = confirm("Would you want your password to have lowercase letters?");
-  var upperAlpha = confirm("Would you want your password to have uppercase letters?");
-  var numChar = confirm("Would you want your password to have numbers?");
-  var specialPick = confirm("Do you want your password to have special characters?");
+  var lowerAlpha = confirm("Would you want your password to have lowercase letters? (abcdefg....) \n (OK = Yes) (Cancel = No)");
+  var upperAlpha = confirm("Would you want your password to have uppercase letters? (ABCDEFG....) \n (OK = Yes) (Cancel = No)");
+  var numChar = confirm("Would you want your password to have numbers? (1234567890) \n (OK = Yes) (Cancel = No)");
+  var specialPick = confirm("Do you want your password to have special characters? (~!@#$%^....) \n (OK = Yes) (Cancel = No)");
 
 //Creates an array for chosen characters called 'userArray' and puts them together
   var userArray = [];
@@ -44,7 +43,7 @@ function writePassword() {
     userArray = userArray.concat(specialChar);
   }
 
-//this function will take the password length and collection to perform the random math for the password text
+//this function will take the password length and userArray to perform the random math for the password text
   function generatePassword() {
     var passwordText = "";
     for (var i = 0; i < passwordLength; i++) {

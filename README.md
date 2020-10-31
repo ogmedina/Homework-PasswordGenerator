@@ -1,6 +1,6 @@
-# Homework Javacript: Password Generator
+# Homework JavaScript: Password Generator
 
-## Full Stack Book Camp Homework 3 - Password Generator
+## Full Stack Boot Camp Homework 3 - Password Generator
 
 ### Description
 
