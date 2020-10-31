@@ -7,7 +7,7 @@ var upperCharArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
 var numbers = [0,1,2,3,4,5,6,7,8,9];
 var specialChar = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", '\\', "]", "^", "_", "`", "{", "|", "}", "~"];
 
-//Event Listener for click of button
+//Variable for button in document
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
@@ -57,5 +57,5 @@ function writePassword() {
   passwordTextField.value = generatePassword();
 }
 
-// Add event listener to generate button
+// Add event listener for suer click to run function to writePassword
 generateBtn.addEventListener("click", writePassword);
