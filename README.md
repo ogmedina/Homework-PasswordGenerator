@@ -1,7 +1,9 @@
 # Homework JavaScript: Password Generator
+```
+Live Site: https://ogmedina.github.io/Homework-PasswordGenerator/
+```
 
 ## Full Stack Boot Camp Homework 3 - Password Generator
-
 ### Description
 
 This is the third assignment for the UTSA Full-Stack Bootcamp. This is a password generator using JavaScript. The following items were the highlights of this assignment:
@@ -18,16 +20,15 @@ This is the third assignment for the UTSA Full-Stack Bootcamp. This is a passwor
 
 * Password is written on page
 
+### Technologies Used:
+#### Front End:
+   * HTML
+   * CSS
+   * JavaScript
+
 
 ### Screenshots
-
-Here is a screenshot of the webpage for the password generator. 
 
 ![javascript1](./Images/javascripthomework_n.jpg)
 
 ![javascript2](./Images/javascripthomework_w.jpg)
-
-
-### Deployed Link
-
-Here is a link to the GitHub deployed site: [Password Generator](https://ogmedina.github.io/Homework-PasswordGenerator/)
